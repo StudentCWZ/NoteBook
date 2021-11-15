@@ -77,7 +77,7 @@ import "fmt" // fmt 包中提供格式化、输出、输入的函数
 
 func main()  {
 	// 第三种：省略 var ，注意 := 左侧变量不应该是已经声明的，否则会导致编译错误。
-	// 下面的方式等价于 var name string  name = "tom"
+	// 下面的方式等价于 var name string name = "tom"
 	name := "tom"
 	fmt.Println("name =", name)
 }
@@ -92,15 +92,15 @@ import "fmt" // fmt 包中提供格式化、输出、输入的函数
 func main()  {
 	//该案例演示 Golang 如何一次性声明多个变量
 	//var n1, n2, n3 int
-	//fmt.Println("n1 =",n1, "n2 =",n2, "n3 =",n3)
+	//fmt.Println("n1 =", n1, "n2 =", n2, "n3 =", n3)
 
 	//一次性声明多个变量的方式 2
 	//var n1, name, n3 = 100, "tom", 888
-	//fmt.Println("n1 =",n1, "name =",name, "n3 =",n3)
+	//fmt.Println("n1 =", n1, "name =", name, "n3 =", n3)
 
 	//一次性声明多个变量的方式 3 , 同样可以使用类型推导
 	n1, name, n3 := 100, "tom", 888
-  fmt.Println("n1 =",n1, "name =",name, "n3 =",n3)
+  fmt.Println("n1 =", n1, "name =", name, "n3 =", n3)
 }
 ```
 8. 多变量声明案例(全局变量)
@@ -125,8 +125,8 @@ var (
 
 func main()  {
 	//输出全局变量
-	fmt.Println("n1 =",n1, "name =",name, "n2 =",n2)
-	fmt.Println("n3 =",n3, "name2 =",name2, "n4 =",n4)
+	fmt.Println("n1 =", n1, "name =", name, "n2 =",n2)
+	fmt.Println("n3 =", n3, "name2 =", name2, "n4 =",n4)
 }
 ```
 9. 该区域的数据值可以在同一类型范围内不断变化-相关案例
@@ -179,7 +179,7 @@ func main()  {
 ```
 (1) 在声明变量的时候，就给值 。
 (2) var a int = 45 这就是初始化变量 a 。
-(3) 使用细节：如果生命时就直接赋值，可省略数据类型。
+(3) 使用细节：如果声明时就直接赋值，可省略数据类型。
 var b = 400
 ```
 3. 给变量赋值
@@ -215,7 +215,7 @@ func main()  {
 1. 每一种数据都定义了明确的数据类型，在内存中分配了不同大小的内存空间。
 2. 数据类型中的基本数据类型包括：数值型、字符型(没有专门的字符型、使用 byte 来保存单个字母字符)、布尔型、字符串(官方将 string 归属到基本数据类型)。
 3. 数据类型中的派生/复杂数据类型：指针(Pointer)、数组、结构体(struct)、管道(Channel)、函数、切片(slice)、接口(interface)、map。
-4. 数值型变量包含：整数类型(int, int8 ,int16, int32, int64, uint, uint8, uint16, uint32, uint64, byte)、浮点类型：float32/float64 。
+4. 数值型变量包含：整数类型(int, int8, int16, int32, int64, uint, uint8, uint16, uint32, uint64, byte)、浮点类型：float32/float64 。
 
 ### 整数类型
 #### 基本介绍
@@ -240,8 +240,8 @@ func main()  {
 |:--:|:--:|:--:|:--:|:--:|
 |int|有|32 位系统 4 个字节<br>64 位系统 8 个字节<br>|[-2^31~2^31-1, -2^63~2^63-1]||
 |uint|无|32 位系统 4 个字节<br>64 位系统 8 个字节<br>|[0~2^32-1, 0~2^64-1]||
-|rune|有|与 int32 一样|-2^31~2^31-1|等价 int32，表示一个 Unicode 码||
-|byte|无|与无符号的 uint8 等价|0~255|当要存储字符时选用 byte ||
+|rune|有|与 int32 一样|[-2^31, 2^31-1]|等价 int32，表示一个 Unicode 码||
+|byte|无|与无符号的 uint8 等价|[0, 255]|当要存储字符时选用 byte ||
 #### 案例演示
 ```
 package main
@@ -295,7 +295,7 @@ func main()  {
 	var n1 = 100 // n1 是什么类型
 	//查看某个变量的数据类型
 	//fmt.Printf()可以用于格式化输出
-	fmt.Printf("n1的类型 %T \n", n1)
+	fmt.Printf("n1 的类型 %T \n", n1)
 }
 ```
 3. 如何在程序中查看某个变量的占用字节大小和数据类型。
@@ -305,14 +305,14 @@ package main
 import (
 	"fmt"
 	"unsafe"
-)  // fmt包中提供格式化、输出、输入的函数
+)  // fmt 包中提供格式化、输出、输入的函数
 
 
 func main()  {
 	//如何在程序中查看某个变量的占用字节大小和数据类型
 	var n2 int64 = 10
 	//unsafe.Sizeof(n2) 是 unsafe 包的一个函数，可以返回 n2 变量占用的字节数。
-	fmt.Printf("n2的类型 %T n2占用的字节数是 %d", n2, unsafe.Sizeof(n2))
+	fmt.Printf("n2 的类型 %T n2 占用的字节数是 %d", n2, unsafe.Sizeof(n2))
 }
 ```
 4. Golang 程序中整型变量在使用时，遵守保小不保大的原则，即：在保证程序正确运行下，尽量使用占用空间小的数据类型。
@@ -389,7 +389,7 @@ func main()  {
 3. 浮点型常量有两种表示形式
 ```
 (1) 十进制数形式: 如：5.12  .512(必须有小数点)
-(2) 科学技术法形式: 如：5.1234e2 = 5.12 * 10的两次方 5.12E-2 = 5.12、10的2次方。
+(2) 科学技术法形式: 如：5.1234e2 = 5.12 * 10 的两次方 5.12E-2 = 5.12、10 的 2 次方。
 ```
 4. 通常情况下，应该使用 float64 ，因为它比 float32 更准确。
 5. 浮点型使用细节的相关案例
@@ -405,7 +405,7 @@ import (
 func main()  {
 	// Golang 的浮点型默认声明为 float64 类型
 	var num5 = 1.1
-	fmt.Printf("num5的数据类型是 %T \n", num5)
+	fmt.Printf("num5 的数据类型是 %T \n", num5)
 
 	//十进制数形式: 如：5.12  .512(必须有小数点)
 	num6 := 5.12
@@ -413,9 +413,9 @@ func main()  {
 	fmt.Println("num6 =", num6, "num7 =", num7)
 
 	//科学计数法形式
-	num8 := 5.1234e2 //5.1234 * 10的二次方
-	num9 := 5.1234E2 //5.1234 * 10的二次方
-	num10 := 5.1234E-2 //5.1234 / 10的二次方
+	num8 := 5.1234e2 // 5.1234 * 10的二次方
+	num9 := 5.1234E2 // 5.1234 * 10的二次方
+	num10 := 5.1234E-2 // 5.1234 / 10的二次方
 	fmt.Println("num8 =", num8)
 	fmt.Println("num9 =", num9)
 	fmt.Println("num10 =", num10)
@@ -429,7 +429,7 @@ func main()  {
 
 #### 相关案例
 1. 如果我们保存的字符在 ASCII 表的，比如 [0-1,a-z,A-Z] 直接可以保存到 byte 。
-2. 如果我保存的字符对应码值大于 255，这时我们可以考虑使用int类型保存。
+2. 如果我保存的字符对应码值大于 255，这时我们可以考虑使用 int 类型保存。
 3. 如果我们需要按字符的方式输出，这时我们需要格式化输出，即 fmt.print("%c", c1) 。
 ```
 package main
@@ -451,7 +451,7 @@ func main()  {
 	//如果我们希望输出对应字符，需要使用格式化输出
 	fmt.Printf("c1 = %c c2 = %c \n", c1, c2)
 
-	//var c3 byte = '北'  overflow溢出
+	//var c3 byte = '北'  overflow 溢出
 	var c3 int = '北'
 	fmt.Printf("c3 = %c c3对应码值 = %d", c3, c3)
 }
@@ -459,7 +459,7 @@ func main()  {
 
 #### 字符类型使用细节
 1. 字符常量是用单引号 '' 括起来的单个字符。例如：var c1 byte = 'a' var c2 int = '中' var c3 byte = '9'。
-2. Go 中允许使用转义字符 '\' 来将其后的字符转变为特殊字符型常量。例如：var c3 char = '\n' // '\n' 表示换行符。
+2. Go 中允许使用转义字符来将其后的字符转变为特殊字符型常量。例如：var c3 char = '\n' // '\n' 表示换行符。
 3. Go 语言的字符使用 UTF-8 编码。(英文字母 1 个字节、汉字 3个字符)
 4. 在 Go 中，字符的本质是一个整数，直接输出时，是该字符对应的 UTF-8 编码的码值。
 5. 可以直接给某个变量赋一个数字，然后按格式化输出时 %c ，会输出该数字对应的 unicode 字符。
@@ -468,7 +468,7 @@ package main
 
 import (
 	"fmt"
-) //fmt包中提供格式化、输出、输入的函数
+) // fmt 包中提供格式化、输出、输入的函数
 
 
 //演示 Golang 中字符类型的使用
@@ -485,7 +485,7 @@ package main
 
 import (
 	"fmt"
-) //fmt包中提供格式化，输出，输入的函数
+) // fmt 包中提供格式化，输出，输入的函数
 
 
 //演示 Golang 中字符类型的使用
@@ -782,14 +782,14 @@ func main() {
 	var isMarried bool // false
 	var name string // ""
 	//这里的 %v 表示按照变量的值输出
-	fmt.Printf("a = %d, b = %f, c = %f, isMarried=%v, name=%v", a, b, c, isMarried, name)
-	fmt.Printf("a = %d, b = %v, c = %v, isMarried=%v, name=%v", a, b, c, isMarried, name)
+	fmt.Printf("a = %d, b = %f, c = %f, isMarried = %v, name = %v", a, b, c, isMarried, name)
+	fmt.Printf("a = %d, b = %v, c = %v, isMarried = %v, name = %v", a, b, c, isMarried, name)
 }
 ```
 
 ### 基本数据类型的转换
 #### 基本介绍
-1. Golang 和 Java/c 不同，Go 在不同类型的变量之间赋值时需要显式转换。也就是说 Golang 中数据类型不能自动转换。
+1. Golang 和 Java/C 不同，Go 在不同类型的变量之间赋值时需要显式转换。也就是说 Golang 中数据类型不能自动转换。
 
 #### 基本语法
 1. 表达式 T(v) 将值 v 转换为类型 T
@@ -816,16 +816,16 @@ func main() {
 	var n2 int8 = int8(i)
 	var n3 int64 = int64(i) //低精度 -> 高精度(仍然要强制转换)
 
-	fmt.Printf("i=%v n1=%v n2=%v n3=%v \n", i, n1, n2, n3)
-
+	fmt.Printf("i = %v n1 = %v n2 = %v n3 = %v \n", i, n1, n2, n3)
+ 
 	//被转换的是变量存储的数据(即值)，变量本身的数据类型并没有变化。
-	fmt.Printf("i type is %T\n", i)
+	fmt.Printf("i type is %T \n", i)
 	
 	
 	//在转换中，比如将 int64 转换成 int8 ，编译时不会报错，只是转换的结果是按溢出处理，和我们希望的结果不一样。
 	var num1 float64 = 999999
 	var num2 int8 = int8(num1)
-	fmt.Println("num2=", num2)
+	fmt.Println("num2 =", num2)
 }
 ```
 
@@ -837,7 +837,7 @@ func main() {
 1. 方式1：fmt.Sprintf("%参数"，表达式)
 ```
 (1) 参数需要和表达式的数据类型相匹配
-(2) fmt.Sprintf()..会返回转换后的字符串
+(2) fmt.Sprintf() 会返回转换后的字符串
 ```
 2. 方式2：使用 strconv 包的函数
 
@@ -859,16 +859,16 @@ func main() {
 	//使用第一种方式来转换 fmt.Sprintf 方法
 
 	str = fmt.Sprintf("%d", num1)
-	fmt.Printf("str type %T str=%v \n", str, str)
+	fmt.Printf("str type %T str = %v \n", str, str)
 
 	str = fmt.Sprintf("%f", num2)
-	fmt.Printf("str type %T str=%v \n", str, str)
+	fmt.Printf("str type %T str = %v \n", str, str)
 
 	str = fmt.Sprintf("%t", b)
-	fmt.Printf("str type %T str=%v \n", str, str)
+	fmt.Printf("str type %T str = %v \n", str, str)
 
 	str = fmt.Sprintf("%c", myChar)
-	fmt.Printf("str type %T str=%v", str, str)
+	fmt.Printf("str type %T str = %v", str, str)
 
 }
 ```
@@ -890,19 +890,19 @@ func main() {
 	var b2 bool = true
 
 	str = strconv.FormatInt(int64(num3),10)
-	fmt.Printf("str type %T str=%v \n", str, str)
+	fmt.Printf("str type %T str = %v \n", str, str)
 
 	//说明：'f' 格式 10：表示小数位保留 10 位 64：表示这个小数 float64 。
 	str = strconv.FormatFloat(num4, 'f', 10, 64)
-	fmt.Printf("str type %T str=%v \n", str, str)
+	fmt.Printf("str type %T str = %v \n", str, str)
 
 	str = strconv.FormatBool(b2)
-	fmt.Printf("str type %T str=%v", str, str)
+	fmt.Printf("str type %T str = %v \n", str, str)
 
 	//strconv 包中有一个函数 Itoa
 	var num5 int64 = 4567
 	str = strconv.Itoa(int(num5))
-	fmt.Printf("str type %T str=%v", str, str)
+	fmt.Printf("str type %T str = %v", str, str)
 }
 
 ```
@@ -926,7 +926,7 @@ func main() {
 	//1. strconv.ParseBool(str) 函数会返回两个值(value bool, err error)
 	//2. 因为我只想获取到 value bool ，不想获取 err ，所以使用 _ 忽略。
 	b, _ = strconv.ParseBool(str)
-	fmt.Printf("b type %T b=%v \n", b, b)
+	fmt.Printf("b type %T b = %v \n", b, b)
 
 
 	var str2 string = "1234590"
@@ -934,20 +934,20 @@ func main() {
 	var n2 int
 	n1, _ = strconv.ParseInt(str2, 10, 64)
 	n2 = int(n1)
-	fmt.Printf("n1 type %T n1=%v \n", n1, n1)
-	fmt.Printf("n2 type %T n2=%v \n", n2, n2)
+	fmt.Printf("n1 type %T n1 = %v \n", n1, n1)
+	fmt.Printf("n2 type %T n2 = %v \n", n2, n2)
 
 
 	var str3 string = "123.456"
 	var f1 float64
 	f1, _ = strconv.ParseFloat(str3, 64)
-	fmt.Printf("f1 type %T f1=%v \n", f1, f1)
+	fmt.Printf("f1 type %T f1 = %v \n", f1, f1)
 }
 ```
 2. 函数一般返回 int64 或者 float64 ，如果要获得 int32 或 float32 ，还需加一步转换。
 
 #### 注意事项
-1. 在将 String 类型转成基本数据类型时，要确保 String 类型能够转成有效的数据，比如我们可以把 “123”，转成一个整数，但是不能把 “hello” 转成一个整数，如果这样做，Golang 直接将其转成 0 。
+1. 在将 String 类型转成基本数据类型时，要确保 String 类型能够转成有效的数据，比如我们可以把 "123"，转成一个整数，但是不能把 "hello" 转成一个整数，如果这样做，Golang 直接将其转成 0 。
 ```
 package main
 
@@ -966,7 +966,7 @@ func main() {
 	//1. strconv.ParseBool(str)函数会返回两个值(value bool, err error)
 	//2. 因为我只想获取到 value bool，不想获取 err，所以使用 _ 忽略。
 	b, _ = strconv.ParseBool(str)
-	fmt.Printf("b type %T b=%v \n", b, b)
+	fmt.Printf("b type %T b = %v \n", b, b)
 
 
 	var str2 string = "1234590"
@@ -974,21 +974,21 @@ func main() {
 	var n2 int
 	n1, _ = strconv.ParseInt(str2, 10, 64)
 	n2 = int(n1)
-	fmt.Printf("n1 type %T n1=%v \n", n1, n1)
-	fmt.Printf("n2 type %T n2=%v \n", n2, n2)
+	fmt.Printf("n1 type %T n1 = %v \n", n1, n1)
+	fmt.Printf("n2 type %T n2 = %v \n", n2, n2)
 
 
 	var str3 string = "123.456"
 	var f1 float64
 	f1, _ = strconv.ParseFloat(str3, 64)
-	fmt.Printf("f1 type %T f1=%v \n", f1, f1)
+	fmt.Printf("f1 type %T f1 = %v \n", f1, f1)
 
 	//注意事项:  在将 String 类型转成基本数据类型时，要确保 String 类型能够转成有效的数据，比如我们可以把 "123" ，转成一个整数，但是不能把 "hello" 转成一个整数，如果这样做，Golang 直接将其转成 0 。
 	//哪怕 var n3 int64 = 11，最后 n3 结果还是 0 。
 	var str4 string = "hello"
 	var n3 int64
-	n3, _ = strconv.ParseInt(str4,10,64)
-	fmt.Printf("n3 type %T n3=%v \n", n3, n3)
+	n3, _ = strconv.ParseInt(str4, 10, 64)
+	fmt.Printf("n3 type %T n3 = %v \n", n3, n3)
 
 }
 ```
@@ -996,7 +996,7 @@ func main() {
 ### 指针
 #### 基本介绍
 1. 基本数据类型，变量存的就是值，也叫值类型。
-2. 获取变量的地址，用 & ，比如: var num int，获取num的地址：&num
+2. 获取变量的地址，用 & ，比如: var num int，获取 num 的地址：&num
 3. 指针类型，变量存的是一个地址，这个地址指向的空间存的才是值。比如：var ptr *int = &num
 4. 获取指针类型指向的值，使用: *，比如: var ptr *int，使用 *ptr 获取 ptr 指向值。 
 5. 相关案例
@@ -1011,16 +1011,16 @@ func main() {
 	//基本数据类型在内存布局
 	var i int = 10
 	// i 的地址是什么，&i
-	fmt.Println("i的内存地址=", &i)
+	fmt.Println("i 的内存地址 =", &i)
 
 	//下面的 var ptr *int = &i
 	//1. ptr 是一个指针变量
 	//2. ptr 的类型 *int
-	//3. ptr 本身的值&i
+	//3. ptr 本身的值 &i
 	var ptr *int = &i
 	fmt.Printf("ptr = %v \n", ptr)
-	fmt.Printf("ptr的地址 = %v \n", &ptr)
-	fmt.Printf("ptr指向的值 = %v", *ptr)
+	fmt.Printf("ptr 的地址 = %v \n", &ptr)
+	fmt.Printf("ptr 指向的值 = %v", *ptr)
 }
 ```
 ```
@@ -1034,7 +1034,7 @@ func main() {
 	//1. 写一个程序，获取一个 int 变量 num 的地址，并显示到终端。
 	//2. 将 num 的地址赋给指针 ptr ，并通过 ptr 去修改 num 值。
 	var num int = 9
-	fmt.Printf("num address=%v \n", &num)
+	fmt.Printf("num address = %v \n", &num)
 
 	var ptr *int
 	ptr = &num
@@ -1129,7 +1129,7 @@ func main() {
 	//Golang 中认为 num 和 Num 是不同的变量
 	var num int64 = 10
 	var Num int64 = 12
-	fmt.Println("num =", num, "Num=", Num)
+	fmt.Println("num =", num, "Num =", Num)
 	fmt.Printf("num = %v Num = %v", num, Num)
 
 	//标识符不能包含空格
@@ -1202,7 +1202,7 @@ var HeroName string = "公孙胜"
 1. 在 Go 中，为了简化代码编译过程中对代码的解析，其定义的保留关键字只有 25 个。
 
 |保留关键字|保留关键字|保留关键字|保留关键字|保留关键字|保留关键字|
-|--|--|--|--|--|--|
+|:--:|:--:|:--:|:--:|:--:|:--:|
 |break|default|func|interface|select|
 |case|defer|go|map|struct|
 |chan|else|goto|package|switch|
@@ -1213,7 +1213,7 @@ var HeroName string = "公孙胜"
 1. 除了保留关键字外，Go 还提供了 36 个预定的标识符，其中包括基础数据类型和系统内嵌函数。
 
 |预定义标识符|预定义标识符|预定义标识符|预定义标识符|预定义标识符|预定义标识符|
-|--|--|--|--|--|--|
+|:--:|:--:|:--:|:--:|:--:|:--:|
 |append|bool|byte|cap|close|complex|
 |complex64|complex128|unit16|copy|false|float32|
 |float64|imag|int|int8|int16|int16|
@@ -1226,7 +1226,7 @@ var HeroName string = "公孙胜"
 1. 常量使用 const 修改
 2. 常量在定义的时候，必须初始化
 3. 常量不能修改
-4. 常量只能修饰 bool、数值类型(int、float系列)、string 类型
+4. 常量只能修饰 bool、数值类型(int、float 系列)、string 类型
 5. 语法
 ```
 const identifier [type] = value
@@ -1245,7 +1245,7 @@ func main() {
 	const tax int = 0
 	// 常量是不能修改
 	// tax = 10
-	// 常量只能修饰 bool、数值类型(int、float系列)、string 类型(基本数据类型)
+	// 常量只能修饰 bool、数值类型(int、float 系列)、string 类型(基本数据类型)
 	// const name  = "Tom" // ok
 	// const tax float64  = 0.8 // ok
 	// const a int //error
