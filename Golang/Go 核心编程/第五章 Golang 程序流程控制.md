@@ -1,6 +1,6 @@
 # Golang 程序流程控制
 ## 程序流程控制介绍
-1. 在程序中，程序运行的流程控制决定程序是如何执行的，是我们必须掌握的，主要有三大流程控制语句。
+1. 在程序中，程序运行的流程控制决定程序是如何执行，是我们必须掌握的，主要有三大流程控制语句。
 ```
 (1) 顺序控制
 (2) 分支控制
@@ -8,121 +8,107 @@
 ```
 
 ## 顺序控制
-### 顺序控制的介绍
-1. 程序从上到下逐行地执行，中间没有任何判断和跳转。
+### 基本介绍
+1. 程序从上到下逐行地运行，中间没有任何判断和跳转。
 
 ### 顺序控制的注意事项
 1. Golang 中定义变量时采用合法的前向引用。
 ```
-//正确案例
-
+// 正确案例
 func main() {
   var num1 int = 10
   var num int = num1 + 20
   fmt.Println(num2)
-
 }
 
-
-//错误案例
-
+// 错误案例
 func main() {
   var num2 int = num1 +20
   var num1 int = 10
   fmt.Println(num2)
-
 }
 ```
 
-## 分支控制if-else
-### 分支控制if-else介绍
-1. 让程序有选择的执行，分支控制有三种：
+## 分支控制
+### 分支控制 if-else 介绍
+1. 让程序有选择地执行，分支控制有三种：
 ```
 (1) 单分支
 (2) 双分支
 (3) 多分支
 ```
 
-#### 单分支
+### 单分支
 1. 基本语法
 ```
 if 条件表达式{
   执行代码块
 }
 ```
-2. 说明：当条件表达式为true时，就会执行{}的代码。
-3. 注意：{}是必须有的，就算你只写一行代码。
+2. 说明：当条件表达式为 true 时，就会执行 {} 的代码。
+3. 注意： {} 是必须有的，就算你只写一行代码。
 4. 案例演示
 ```
 package main
 
-import "fmt"//fmt包中提供格式化，输出，输入的函数
+import "fmt" // fmt 包中提供格式化、输出、输入的函数
 
 
 func main()  {
 
-	//编写一个程序，可以输入人的年龄，如果该同志的年龄大于18岁，则输出"你年龄大于18，要对自己的行为负责！"
+	//编写一个程序，可以输入人的年龄，如果该同志的年龄大于 18 岁，则输出 "你年龄大于18，要对自己的行为负责！"
 	//分析
 	//1. 年龄 ==> var age int
 	//2. 从控制台接收一个输入 fmt.Scanln(&age)
-	//3. if判断
+	//3. if 判断
 	var age int
 	fmt.Println("请输入年龄：")
 	fmt.Scanln(&age)
-
 	if age > 18 {
 		fmt.Println("你年龄大于18，要对自己的行为负责！")
 	}
-
 }
 ```
-5. 细节说明
-```
-(1) Go 的if还用一个强大的地方就是条件判断语句里面允许声明一个变量，这个变量的作用域只能在该条件逻辑块内，其他地方就不起作用了。
-```
+5. 细节说明：Go 的 if 还用一个强大的地方就是条件判断语句里面允许声明一个变量，这个变量的作用域只能在该条件逻辑块内，其他地方就不起作用了。
 6. 相关案例
 ```
 package main
 
-import "fmt"//fmt包中提供格式化，输出，输入的函数
+import "fmt" // fmt 包中提供格式化、输出、输入的函数
 
 
 func main()  {
-	//Golang 支持在if中，直接定义一个变量，比如下面
-	if age :=20; age > 18 {
+	// Golang 支持在if中，直接定义一个变量，比如下面
+	if age := 20; age > 18 {
 		fmt.Println("你年龄大于18，要对自己的行为负责！")
 	}
-
 }
 ```
 
-#### 双分支
+### 双分支
 1. 基本语法
 ```
 if 条件表达式 {
   执行代码块1
-}else{
+} else {
   执行代码块2
 }
 ```
-2. 说明
-```
-(1) 当条件表达式成立，即执行代码块1，否则执行代码块2。{}也是必须有的。
-```
+2. 说明：当条件表达式成立，即执行代码块 1 ，否则执行代码块 2 。 {} 也是必须有的。
 3. 相关案例
 ```
 package main
 
-import "fmt"//fmt包中提供格式化，输出，输入的函数
+import "fmt" // fmt 包中提供格式化、输出、输入的函数
 
 
 func main() {
-	//编写一个程序，可以输入人的年龄，如果该同志的年龄大于18岁，则输出"你的年龄大于18，要对自己的行为负责！"。
-	// 否则，输出"你的年龄不大这次放过你了。"
+	//编写一个程序，可以输入人的年龄，如果该同志的年龄大于 18 岁，则输出"你的年龄大于 18 ，要对自己的行为负责！"。
+	//否则，输出"你的年龄不大这次放过你了。"
 
 	//思路分析
 	//1. 年龄 ===> var age int
-	//2. fmt.Scanln接收
+	//2. fmt.Scanln 接收
 	//3. if --- else
 	var age int
 	fmt.Println("请输入年龄：")
@@ -133,21 +119,20 @@ func main() {
 	} else {
 		fmt.Println("你的年龄不大这次放过你了。")
 	}
-
 }
 ```
 4. 单分支和双分支的相关案例
 ```
 package main
 
-import "fmt" //fmt包中提供格式化，输出，输入的函数
+import "fmt" // fmt 包中提供格式化、输出、输入的函数
 
 
 func main() {
 	var x int  = 4
 	var y int = 1
-	if x>2 {
-		if y >2 {
+	if x > 2 {
+		if y > 2 {
 			fmt.Println(x + y)
 		} else {
 			fmt.Println("atguigu")
@@ -155,19 +140,18 @@ func main() {
 	} else{
 		fmt.Println("x is =", x)
 	}
-
 }
 ```
-#### 单分支和双分支的练习题
-1. 编写程序，声明2个int32型变量并赋值。判断两数之和，如果大于等于50，打印"hello world!"。
+### 单分支和双分支的练习题
+1. 编写程序，声明 2 个 int32 型变量并赋值。判断两数之和，如果大于等于 50 ，打印"hello world!"。
 ```
 package main
 
-import "fmt" //fmt包中提供格式化，输出，输入的函数
+import "fmt" // fmt 包中提供格式化、输出、输入的函数
 
 
 func main() {
-	//编写程序，声明2个int32型变量并赋值。判断两数之和，如果大于等于50，打印"hello world!"。
+	//编写程序，声明 2 个 int32 型变量并赋值。判断两数之和，如果大于等于 50 ，打印"hello world!"。
 
 	//分析
 	//1. 变量
@@ -177,18 +161,17 @@ func main() {
 	if x + y >= 50 {
 		fmt.Println("hello world!")
 	}
-
 }
 ```
-2. 编写程序，声明2个float64型变量并赋值。判断第一个数大于10.0，且第2个数小于20.0，打印两数之和。
+2. 编写程序，声明 2 个 float64 型变量并赋值。判断第一个数大于 10.0，且第 2 个数小于 20.0，打印两数之和。
 ```
 package main
 
-import "fmt" //fmt包中提供格式化，输出，输入的函数
+import "fmt" // fmt 包中提供格式化、输出、输入的函数
 
 
 func main() {
-	//编写程序，声明2个float64型变量并赋值。判断第一个数大于10.0，且第2个数小于20.0，打印两数之和。
+	//编写程序，声明 2 个 float64 型变量并赋值。判断第一个数大于 10.0，且第 2 个数小于 20.0，打印两数之和。
 
 	//分析
 	//1. 变量
@@ -196,20 +179,19 @@ func main() {
 	var x float64  = 10.1
 	var y float64 = 19.1
 	if x > 10.0 && y < 20.0 {
-		fmt.Println(x+y)
+		fmt.Println(x + y)
 	}
-
 }
 ```
-3. 定义两个变量int32，判断两者的和，是否能被3又能被5整除，打印提示信息。
+3. 定义两个变量 int32 ，判断两者的和，是否能被 3 又能被 5 整除，打印提示信息。
 ```
 package main
 
-import "fmt"//fmt包中提供格式化，输出，输入的函数
+import "fmt" // fmt 包中提供格式化、输出、输入的函数
 
 
 func main() {
-	//定义两个变量int32，判断两者的和，是否能被3又能被5整除，打印提示信息
+	//定义两个变量 int32 ，判断两者的和，是否能被 3 又能被 5 整除，打印提示信息。
 
 	//分析
 	//1. 变量
@@ -217,20 +199,20 @@ func main() {
 	var x int32  = 10
 	var y int32 = 20
 	if (x + y) % 3 == 0 && (x + y) % 5 == 0 {
-		fmt.println("x + y 能被3整除且能被5整除。")
+		fmt.println("x + y 能被 3 整除且能被 5 整除。")
 	}
 }
 ```
-4. 判断一个年份是否是闰年，闰年的条件是符合下面两者之一：(1) 年份能被4整除，但不能被100整除；(2)能被400整除。
+4. 判断一个年份是否是闰年，闰年的条件是符合下面两者之一：(1) 年份能被 4 整除，但不能被 100 整除；(2) 能被 400 整除。
 ```
 package main
 
-import "fmt" //fmt包中提供格式化，输出，输入的函数
+import "fmt" // fmt 包中提供格式化、输出、输入的函数
 
 
 func main() {
 	//判断一个年份是否是闰年，闰年的条件是符合下面两者之一：
-	//(1) 年份能被4整除，但不能被100整除；(2)能被400整除
+	//(1) 年份能被 4 整除，但不能被 100 整除；(2)能被 400 整除
 
 	var year int = 2020
 	if (year % 4 == 0 && year % 100 != 0) || year % 400 == 0 {
@@ -239,44 +221,45 @@ func main() {
 }
 ```
 
-#### 多分支
+## 多分支
 1. 基本语法
 ```
 if 条件表达式 {
-  执行代码块1
+  执行代码块 1
 } else if 条件表达式2 {
-  执行代码块2
+  执行代码块 2
 }
 ...
 else {
-  执行代码块n
+  执行代码块 n
 }
 ```
-2. 多分支基本语法的说明
+2. 多分支的判断流程：
 ```
-1. 多分支的判断流程如下：
-(1) 先判断条件表达式1是否成立。如果为真，就执行代码块1.
-(2) 如果条件表达式1如果为假，就去判断条件表达式2是否成立，如果表达式2为真，就执行代码块2。
+(1) 先判断条件表达式 1 是否成立。如果为真，就执行代码块 1 。
+(2) 如果条件表达式 1 如果为假，就去判断条件表达式 2 是否成立，如果表达式 2 为真，就执行代码块 2 。
 (3) 依次类推
 (4) 如果所有的条件表达式不成立，则执行 else 的语句块。
-
-2. 最后的 else 不是必须的。
-3. 多分支只能有一个执行入口。
 ```
-3. 多分支的快速入门案例
+3. 多分支基本语法的说明：
+```
+(1) 最后的 else 不是必须的。
+(2) 多分支只能有一个执行入口。
+```
+4. 多分支的快速入门案例
 ```
 // 案例一
 
 package main
 
-import "fmt" //fmt包中提供格式化，输出，输入的函数
+import "fmt" // fmt 包中提供格式化、输出、输入的函数
 
 
 func main() {
 	//岳小鹏参加 Golang 考试，他和他的父亲岳不群达成承诺：
-	//如果：成绩为100分时，奖励一辆 BMW ；
-	//成绩为(80, 99]时，奖励一台 iphone7Plus ；
-	//成绩为[60, 80]时，奖励一台 ipad ；
+	//如果：成绩为 100 分时，奖励一辆 BMW ；
+	//成绩为 (80, 99] 时，奖励一台 iphone7Plus ；
+	//成绩为 [60, 80] 时，奖励一台 ipad ；
 	//其他时，什么奖励也没有。
 	//请从键盘输入岳小鹏的期末成绩，并加以判断。
 
@@ -299,14 +282,13 @@ func main() {
 	} else {
 		fmt.Println("什么奖励也没有")
 	}
-
 }
 ```
 ```
 // 案例二
 package main
 
-import "fmt" //fmt包中提供格式化，输出，输入的函数
+import "fmt" // fmt 包中提供格式化、输出、输入的函数
 
 
 func main() {
@@ -314,9 +296,9 @@ func main() {
 	if b == false {
 		fmt.Println("a")
 	} else if b {
-		fmt.Println("b") //b
+		fmt.Println("b") // b
 	} else if !b {
-		fmt.Println("c") //c
+		fmt.Println("c") // c
 	} else {
 		fmt.Println("d")
 	}
@@ -327,23 +309,23 @@ func main() {
 package main
 
 import (
-	"fmt" //fmt包中提供格式化，输出，输入的函数
+	"fmt"  // fmt 包中提供格式化、输出、输入的函数
 	"math"
 )
 
 
 
 func main() {
-	//求ax^2 + bx + c = 0方程的根。a, b, c 分别为函数的参数，如果：b^2 - 4ac > 0，则有两个解；
-	//b^2 - 4ac = 0， 则有一个解；b^2 - 4ac < 0，则无解；
+	//求 ax^2 + bx + c = 0 方程的根。a, b, c 分别为函数的参数，如果：b^2 - 4ac > 0，则有两个解；
+	// b^2 - 4ac = 0， 则有一个解；b^2 - 4ac < 0，则无解；
 	//提示1：x1 = (-b + sqrt(b^2 - 4ac < 0)) / 2a ; x2 = (-b - sqrt(b^2 - 4ac < 0)) / 2a
 	//提示2：math.Sqrt(num); 可以求平方根，需要引入 math 包
 
 	//分析思路
-	//1. a,b,c 是三个float64
+	//1. a, b, c 是三个 float64
 	//2. 使用到给出的数学公式
 	//3. 使用到多分支
-	//4. 使用到math.Sqrt方法 => 手册
+	//4. 使用到 math.Sqrt 方法 => 手册
 
 	var a float64 = 3.0
 	var b  float64 = 100.0
@@ -362,19 +344,18 @@ func main() {
 	} else {
 		fmt.Println("方程无解...")
 	}
-
 }
 ```
 ```
 //案例四
 package main
 
-import "fmt" //fmt包中提供格式化，输出，输入的函数
+import "fmt" // fmt 包中提供格式化、输出、输入的函数
 
 
 func main() {
 
-	// 大家都知道，男大当婚，女大当嫁。那么女方家长要嫁女儿，当然要提出一定条件：高180cm以上；富：财富1千万以上；帅：是。 条件从控制台输入。
+	// 大家都知道，男大当婚，女大当嫁。那么女方家长要嫁女儿，当然要提出一定条件：高 180 cm 以上；富：财富 1 千万以上；帅：是。 条件从控制台输入。
 	// 1. 如果这三个条件同时满足，则："我一定要嫁给他！！！"。
 	// 2. 如果三个条件有为真的情况，则："嫁吧，比上不足，比下有余。"
 	// 3. 如果三个条件都不满足，则："不嫁！"
@@ -404,8 +385,8 @@ func main() {
 }
 ```
 
-#### 嵌套分支
-##### 基本介绍
+## 嵌套分支
+### 基本介绍
 1. 在一个分支结构中又完整的嵌套了另一个完整的分支结构，里面的分支结构称为内层分支外面的分支称为外层分支。
 2. 基本语法
 ```
@@ -415,23 +396,23 @@ if 条件表达式 {
   }
 }
 ```
-3. 说明：嵌套分支不宜过多，建议控制在3层内。
+3. 说明：嵌套分支不宜过多，建议控制在 3 层内。
 4. 相关案例
 ```
 //案例一
 package main
 
-import "fmt" //fmt包中提供格式化，输出，输入的函数
+import "fmt" // fmt 包中提供格式化、输出、输入的函数
 
 
 func main() {
 
-	//参加百米运动会，如果勇士8秒内进入决赛，否则提示淘汰。并根据性别提示进入男子组或女子组。
+	//参加百米运动会，如果勇士 8 秒内进入决赛，否则提示淘汰。并根据性别提示进入男子组或女子组。
 	//输入成绩和性别。
 
 	//分析思路
-	//1. 定义一个变量，来接收跑步的秒数，flaot64。
-	//2. 定义一个变量，来接收性别string
+	//1. 定义一个变量，来接收跑步的秒数，flaot64 。
+	//2. 定义一个变量，来接收性别 string
 	//3. 因为判断是嵌套的判断，因此我们会使用嵌套分支。
 
 	var second float64
@@ -439,19 +420,16 @@ func main() {
 	fmt.Scanln(&second)
 
 
-
 	if second <= 8 {
 		//进入决赛
 		var gender string
 		fmt.Println("请输入性别：")
 		fmt.Scanln(&gender)
-
 		if gender == "男" {
 			fmt.Println("进入决赛的男子组")
 		} else {
 			fmt.Println("进入决赛的女子组")
 		}
-
 	} else {
 		fmt.Println("out...")
 	}
@@ -461,7 +439,7 @@ func main() {
 //案例二
 package main
 
-import "fmt" //fmt包中提供格式化，输出，输入的函数
+import "fmt" // fmt 包中提供格式化、输出、输入的函数
 
 
 func main() {
@@ -510,44 +488,37 @@ func main() {
 }
 ```
 
-## switch分支结构
-### switch分支的基本介绍
-1. switch语句用于基于不同条件执行不同动作，每个case分支都是唯一的，从上到下逐一测试，知道匹配为止。
-2. 匹配项后面也不需要再加break。
+## switch 分支结构
+### switch 分支的基本介绍
+1. switch 语句用于基于不同条件执行不同动作，每个 case 分支都是唯一的，从上到下逐一测试，直到匹配为止。
+2. 匹配项后面也不需要再加 break 。
 
-### switch分支的基本语法
+### switch 分支的基本语法
 ```
 switch 表达式 {
 case 表达式1,表达式2,...:
   语句块1
 case 表达式3,表达式4,...:
   语句块2
-//这里可以有多个case语句
-
+// 这里可以有多个 case 语句
 default:
   语句块
 }
 ```
 
-### switch的流程
-1. switch的执行流程是，先执行表达式，得到值，然后和case的表达式进行比较，如果相等，就匹配到，然后执行对应的case的语句块，然后退出switch控制。
-2. 如果switch的表达式的值没有和任何的case的表达式匹配成功，则执行default的语句块，执行后退出switch的控制。
-3. Golang 的 case 后的表达式有多个，使用逗号间隔。
-4. Golang 中的 case 语句块不需要写 break，因为默认会有，即在默认情况下，当程序执行完case语句块后，就直接退出该 switch 控制结构。
-
-### switch的快速入门案例
+### switch 的快速入门案例
 ```
 package main
 
-import "fmt" //fmt包中提供格式化，输出，输入的函数
+import "fmt" // fmt 包中提供格式化、输出、输入的函数
 
 
 func main() {
 
 	/*
 		案例：
-		请编写一个程序，该程序可以接收一个字符，比如：a,b,c,d,e,f,g。
-		a表示星期一，b表示星期二...。根据用户的输入显示相应的信息。
+		请编写一个程序，该程序可以接收一个字符，比如：a, b, c, d, e, f, g。
+		a 表示星期一，b 表示星期二...。根据用户的输入显示相应的信息。
 		要求使用 switch 语句完成
 
 
@@ -558,7 +529,7 @@ func main() {
 	*/
 
 	var key byte
-	fmt.Println("请输入一个字符 a,b,c,d,e,f,g")
+	fmt.Println("请输入一个字符 a, b, c, d, e, f, g:")
 	fmt.Scanf("%c", &key)
 
 	switch key {
@@ -571,26 +542,24 @@ func main() {
 		//...
 		default:
 			fmt.Println("输入有误...")
-
 	}
 }
 ```
-
-### switch细节讨论
-1. case/switch后是一个表达式(即：常量值、变量、一个有返回值的函数等都可以)。
+### switch 细节讨论
+1. case/switch 后是一个表达式(即：常量值、变量、一个有返回值的函数等都可以)。
 ```
 //案例一
 package main
 
-import "fmt" //fmt包中提供格式化，输出，输入的函数
+import "fmt" // fmt 包中提供格式化、输出、输入的函数
 
 
 func main() {
 
 	/*
 		案例：
-		请编写一个程序，该程序可以接收一个字符，比如：a,b,c,d,e,f,g。
-		a表示星期一，b表示星期二...。根据用户的输入显示相应的信息。
+		请编写一个程序，该程序可以接收一个字符，比如：a, b, c, d, e, f, g。
+		a 表示星期一，b 表示星期二...。根据用户的输入显示相应的信息。
 		要求使用 switch 语句完成
 
 
@@ -601,7 +570,7 @@ func main() {
 	*/
 
 	var key byte
-	fmt.Println("请输入一个字符 a,b,c,d,e,f,g")
+	fmt.Println("请输入一个字符 a, b, c, d, e, f, g: ")
 	fmt.Scanf("%c", &key)
 
 	switch 'a' {
@@ -614,7 +583,6 @@ func main() {
 	//...
 	default:
 		fmt.Println("输入有误...")
-
 	}
 }
 ```
@@ -622,7 +590,7 @@ func main() {
 //案例二
 package main
 
-import "fmt" //fmt包中提供格式化，输出，输入的函数
+import "fmt" // fmt 包中提供格式化、输出、输入的函数
 
 
 //写一个非常简单的函数
@@ -634,8 +602,8 @@ func main() {
 
 	/*
 		案例：
-		请编写一个程序，该程序可以接收一个字符，比如：a,b,c,d,e,f,g。
-		a表示星期一，b表示星期二...。根据用户的输入显示相应的信息。
+		请编写一个程序，该程序可以接收一个字符，比如：a, b, c, d, e, f, g。
+		a 表示星期一，b 表示星期二...。根据用户的输入显示相应的信息。
 		要求使用 switch 语句完成
 
 
@@ -646,7 +614,7 @@ func main() {
 	*/
 
 	var key byte
-	fmt.Println("请输入一个字符 a,b,c,d,e,f,g")
+	fmt.Println("请输入一个字符 a, b, c, d, e, f, g:")
 	fmt.Scanf("%c", &key)
 
 	switch test(key) + 1 {
@@ -659,22 +627,20 @@ func main() {
 	//...
 	default:
 		fmt.Println("输入有误...")
-
 	}
 }
 ```
-2. case后的各个表达式的值的数据类型，必须和switch的表达式数据类型一致。
+2. case 后的各个表达式的值的数据类型，必须和 switch 的表达式数据类型一致。
 ```
 //案例一
 package main
 
-import "fmt" //fmt包中提供格式化，输出，输入的函数
+import "fmt" // fmt 包中提供格式化、输出、输入的函数
 
 
 func main() {
 	var n1 int32 = 20
 	var n2 int32 = 20
-
 
 	switch n1 {
 		case n2 :
@@ -684,19 +650,18 @@ func main() {
 	}
 }
 ```
-3. case后面可以带多个表达式，使用逗号间隔。比如case表达式1，表达式2...。
+3. case 后面可以带多个表达式，使用逗号间隔。比如 case 表达式1，表达式2...。
 ```
 //案例一
 package main
 
-import "fmt" //fmt包中提供格式化，输出，输入的函数
+import "fmt" // fmt 包中提供格式化、输出、输入的函数
 
 
 func main() {
 
 	var n1 int32 = 20
 	var n2 int32 = 20
-
 
 	switch n1 {
 	case n2, 10, 5: // case 后面可以有多个表达式
@@ -706,12 +671,12 @@ func main() {
 	}
 }
 ```
-4. case后面的表达式如果是常量值(字面量)，则要求不能重复。
+4. case 后面的表达式如果是常量值(字面量)，则要求不能重复。
 ```
 //案例一
 package main
 
-import "fmt" //fmt包中提供格式化，输出，输入的函数
+import "fmt" // fmt 包中提供格式化、输出、输入的函数
 
 
 func main() {
@@ -724,7 +689,7 @@ func main() {
 	switch n1 {
 	case n2, 10, 5: // case 后面可以有多个表达式
 		fmt.Println("ok1")
-	//case 5 : //错误，因为前面我们有这个常量5，因此重复，就会报错。
+	//case 5 : //错误，因为前面我们有这个常量 5 ，因此重复，就会报错。
 		//fmt.Println("ok2")
 	case n3:
 		fmt.Println("ok2")
@@ -733,12 +698,12 @@ func main() {
 	}
 }
 ```
-5. case后面不需要带break，程序匹配到一个case后就会执行对应的代码块，然后退出switch，如果一个匹配不到，则执行default。
+5. case 后面不需要带 break ，程序匹配到一个 case 后就会执行对应的代码块，然后退出 switch ，如果一个匹配不到，则执行 default 。
 ```
-//案例一
+// 案例一
 package main
 
-import "fmt" //fmt包中提供格式化，输出，输入的函数
+import "fmt" // fmt 包中提供格式化、输出、输入的函数
 
 
 func main() {
@@ -756,19 +721,19 @@ func main() {
 	}
 }
 ```
-6. default语句不是必须的。
-7. switch后也可以不带表达式，类似于if-else分支来使用。
+6. default 语句不是必须的。
+7. switch 后也可以不带表达式，类似于 if-else 分支来使用。
 ```
 //案例一
 package main
 
-import "fmt" //fmt包中提供格式化，输出，输入的函数
+import "fmt" // fmt 包中提供格式化、输出、输入的函数
 
 
 func main() {
 
 	//switch 后也可以不带表达式，类似if--else分支来使用。
-	var age int =10
+	var age int = 10
 
 	switch {
 		case age == 10 :
@@ -777,22 +742,20 @@ func main() {
 			fmt.Println("age == 20")
 		default :
 			fmt.Println("没有匹配到")
-
 	}
-
 }
 ```
 ```
 //案例二
 package main
 
-import "fmt" //fmt包中提供格式化，输出，输入的函数
+import "fmt" // fmt 包中提供格式化、输出、输入的函数
 
 
 func main() {
 
-	//switch 后也可以不带表达式，类似if--else分支来使用。
-	//case 中也可以对范围进行判断
+	// switch 后也可以不带表达式，类似 if--else 分支来使用。
+	// case 中也可以对范围进行判断
 	var score int = 90
 
 	switch {
@@ -805,15 +768,14 @@ func main() {
 		default :
 			fmt.Println("不及格")
 	}
-
 }
 ```
-8. switch后也可以直接声明/定义一个变量，分号结束，不推荐。
+8. switch 后也可以直接声明/定义一个变量，分号结束，不推荐。
 ```
 //案例一
 package main
 
-import "fmt" //fmt包中提供格式化，输出，输入的函数
+import "fmt" // fmt 包中提供格式化、输出、输入的函数
 
 
 func main() {
@@ -830,15 +792,14 @@ func main() {
 		default :
 			fmt.Println("不及格")
 	}
-
 }
 ```
-9. switch穿透-fallthrough，如果在case语句块后增加fallthrough，则会继续执行下一个case，也叫switch穿透。
+9. switch 穿透- fallthrough ，如果在 case 语句块后增加 fallthrough ，则会继续执行下一个 case ，也叫 switch 穿透。
 ```
 //案例一
 package main
 
-import "fmt" //fmt包中提供格式化，输出，输入的函数
+import "fmt" // fmt 包中提供格式化、输出、输入的函数
 
 
 func main() {
@@ -857,12 +818,11 @@ func main() {
 		default :
 			fmt.Println("没有匹配到...")
 	}
-
 }
 ```
-10. Type Switch：switch语句还可以被用于type-switch来判断某个interface变量中实际指向的变量类型。
+10. Type Switch：switch 语句还可以被用于 type-switch 来判断某个 interface 变量中实际指向的变量类型。
 ```
-//案例一
+// 案例一
 package main
 
 import "fmt"
@@ -888,10 +848,9 @@ func main() {
 	}
 }
 ```
-
-### switch练习
+### switch 练习
+1. 练习一
 ```
-//练习一
 package main
 
 import "fmt"
@@ -900,7 +859,7 @@ import "fmt"
 func main() {
 	/*
 	1. 使用 switch 把小写类型的 char 型转为大写(键盘输入)。
-	2. 只转换 a,b,c,d,e。其他的输出"other"。
+	2. 只转换 a, b, c, d, e。其他的输出 "other" 。
 	*/
 	var char byte
 	fmt.Println("请输入一个字符..")
@@ -922,16 +881,16 @@ func main() {
 	}
 }
 ```
+2. 练习二
 ```
-//练习二
 package main
 
 import "fmt"
 
 func main() {
 	/*
-	1. 对学生成绩大于60分，输出"合格"。低于60分，输出"不合格"。
-	2. (注：输入的成绩不能大于100)
+	1. 对学生成绩大于 60 分，输出"合格"。低于 60 分，输出"不合格"。
+	2. (注：输入的成绩不能大于 100)
 	*/
 
 	var score float64
@@ -947,10 +906,9 @@ func main() {
 			fmt.Println("输入有误..")
 	}
 }
-
 ```
+3. 练习三
 ```
-//练习三
 package main
 
 import "fmt"
@@ -981,8 +939,8 @@ func main() {
 	}
 }
 ```
+4. 练习四
 ```
-//练习四
 package main
 
 import "fmt"
@@ -1021,15 +979,15 @@ func main() {
 }
 ```
 
-### switch和if的比较
-1. 如果判断的具体数值不多，而且符合整数、浮点数、字符、字符串这几种类型。建议使用switch语句，简洁高效。
-2. 其他情况：度取件判断和结果为bool类型的判断，使用if，if的使用范围更广。
+### switch 和 if 的比较
+1. 如果判断的具体数值不多，而且符合整数、浮点数、字符、字符串这几种类型。建议使用 switch 语句，简洁高效。
+2. 其他情况：结果为 bool 类型的判断，使用 if ，if 的使用范围更广。
 
-## for循环
-### for循环的基本介绍
-1. 听其名而知其意。就是让我们的一段代码循环的执行。
+## for 循环
+### for 循环的基本介绍
+1. 听其名而知其意，就是让我们的一段代码循环的执行。
 
-### for 循环案例快速入门
+### for 循环的快速入门
 ```
 package main
 
@@ -1049,43 +1007,41 @@ func main() {
 	//fmt.Println("你好，尚硅谷！")
 	//fmt.Println("你好，尚硅谷！")
 
-	// Golang 中，有循环控制语句来处理循环的执行某段代码的方法 ==> for循环
-	//for循环快速入门
+	// Golang 中，有循环控制语句来处理循环的执行某段代码的方法 ==> for 循环
+	//for 循环快速入门
 
 	for i := 1; i <= 10; i++ {
 		fmt.Println("你好，尚硅谷！", i)
 	}
-
 }
 ```
 
-### for循环的基本语法
+### for 循环
 1. 语法格式
 ```
 for 循环变量初始化；循环条件；循环变量迭代 {
   循环操作(语句)
 }
 ```
-2. 语法格式的说明
+2. 对 for 循环来说，有四个要素
 ```
-1. 对for循环来说，有四个要素：
 (1) 循环变量初始化
 (2) 循环条件
 (3) 循环操作语句
 (4) 循环变量迭代
 ```
-3. for循环执行的顺序说明
+3. for 循环执行的顺序说明
 ```
 (1) 执行循环变量初始化，比如 i := 1
 (2) 执行循环条件，比如 i <= 10
 (3) 如果循环条件为真，就执行循环操作。 比如：fmt.Println("...")
-(4) 执行循环变量迭代，比如i++
-(5) 反复执行2，3，4步骤，直到循环条件为False，就退出for循环。
+(4) 执行循环变量迭代，比如 i++
+(5) 反复执行 2，3，4 步骤，直到循环条件为 False，就退出 for 循环。
 ```
 
-### for循环的注意事项和细节说明
+### for 循环的注意事项和细节说明
 1. 循环条件是返回一个布尔值的表达式。
-2. for循环的第二种的使用方式
+2. for 循环的第二种的使用方式。
 ```
 for 循环条件 {
   //循环执行语句
@@ -1097,7 +1053,7 @@ for 循环条件 {
 for {
   //循环执行语句
 }
-上面的写法等价for;;{}是一个无限循环，通常需要配合break语句使用。
+// 上面的写法等价 for;;{} 是一个无限循环，通常需要配合 break 语句使用。
 ```
 4. Golang 提供 for-range 的方式，可以方便遍历字符串和数组。
 ```
@@ -1114,19 +1070,20 @@ func main() {
 	}
 
 
-	//字符串遍历方式二(for-range方式)
+	//字符串遍历方式二( for-range 方式)
 	str = "abc~ok"
 	for index, val := range str {
-		fmt.Printf("index%d, val=%c \n", index, val)
+		fmt.Printf("index = %d, val = %c \n", index, val)
 	}
 }
 ```
 5. 上面代码细节讨论
 ```
-(1) 如果我们的字符串含有中文，那么传统的遍历字符串方式，就是错误，会出现乱码。原因是：传统的对字符串的遍历是按照字节来遍历，而一个汉字在utf-8编码是对应3个字节。
-(2) 只需要将str转成 []rune切片
-(3) 对应for-range遍历而言，是按照字符方式遍历。因此如果有字符串有中文，也是ok。
+(1) 如果我们的字符串含有中文，那么传统的遍历字符串方式，就是错误，会出现乱码。原因是：传统的对字符串的遍历是按照字节来遍历，而一个汉字在 utf-8 编码是对应 3 个字节。
+(2) 只需要将 str 转成 []rune 切片
+(3) 对应 for-range 遍历而言，是按照字符方式遍历。因此如果有字符串有中文，也是 ok 。
 ```
+6. 具体案例
 ```
 package main
 
@@ -1142,28 +1099,28 @@ func main() {
 	}
 
 
-	//字符串遍历方式二(for-range方式)
+	//字符串遍历方式二( for-range 方式)
 	str = "abc~ok上海"
 	for index, val := range str {
-		fmt.Printf("index%d, val=%c \n", index, val)
+		fmt.Printf("index = %d, val = %c \n", index, val)
 	}
 }
 ```
 
-### for循环练习
+### for 循环练习
+1. 练习一
 ```
-//练习一
 package main
 
 import "fmt"
 
 
 func main() {
-	//打印1~100之间所有是9的倍数的整数的个数及总和。
+	//打印 1~100 之间所有是 9 的倍数的整数的个数及总和。
 
 	//分析思路
-	//1. 使用for循环对 max 进行遍历
-	//2. 当一个数%9==0 就是9的倍数
+	//1. 使用 for 循环对 max 进行遍历
+	//2. 当一个数 %9==0 就是 9 的倍数
 	//3. 我们需要声明两个变量 count 和 sum 来保存个数和总和
 	var max uint64 = 100
 	var count uint64 = 0
@@ -1177,12 +1134,11 @@ func main() {
 			sum += i
 		}
 	}
-
-	fmt.Printf("count=%v sum=%v \n", count, sum)
+	fmt.Printf("count = %v sum = %v \n", count, sum)
 }
 ```
+2. 练习二
 ```
-//练习二
 package main
 
 import "fmt"
@@ -1193,20 +1149,17 @@ func main() {
 	for i := 0; i <= n; i++ {
 		fmt.Printf("%v + %v = %v \n", i, n-i, n)
 	}
-
 }
 ```
 
-### while和do...while的实现
-1. Go语言没有while和do...while语法，如果我们需要使用类似其他语言(比如Java/C的while和do...while)，可以通过for循环来实现其使用效果。
-
-#### for循环实现while的效果
+### while 和 do...while 的实现
+#### for 循环实现 while 的效果
 1. 基本语法
 ```
 循环变量初始化
 for {
   if循环表达式{
-    break //跳出for循环..
+    break // 跳出 for 循环..
   }
   循环操作(语句)
   循环变量迭代
@@ -1214,11 +1167,11 @@ for {
 ```
 2. 基本语法说明
 ```
-(1) for循环是一个无限循环
-(2) break 语句就是跳出for循环
+(1) for 循环是一个无限循环
+(2) break 语句就是跳出 for 循环
 ```
 
-#### for循环实现do...while的效果
+#### for 循环实现 do...while 的效果
 1. 基本语法
 ```
 循环变量初始化
@@ -1226,31 +1179,31 @@ for {
   循环操作(语句)
   循环变量迭代
   if 循环条件表达式 {
-    break//跳出for循环...
+    break // 跳出 for 循环...
   }
 }
 ```
 2. 基本语法的说明
 ```
 (1) 上面的循环是先执行，再判断，因此至少执行一次。
-(2) 当循环条件成立后，就会执行break，break就是跳出for循环，结束循环。
+(2) 当循环条件成立后，就会执行 break ，break 就是跳出 for 循环，结束循环。
 ```
 
 ### 多重循环控制
-1. 将一个循环放在另一个循环体内，就形成了嵌套循环。在外边的for称为外层循环在里面的for循环称为内层循环。
-2. 实质上，嵌套循环就是把内层循环当成外层循环的循环体。当只有内层循环的循环条件为false时，才会完全跳出内层循环，才可结束外层的当次循环，开始下一次的循环。
-3. 设外层循环次数为m次，内层为n次，则内层循环体实际上需要执行m*n次。
+1. 将一个循环放在另一个循环体内，就形成了嵌套循环。在外边的 for 称为外层循环在里面的 for 循环称为内层循环。
+2. 实质上，嵌套循环就是把内层循环当成外层循环的循环体。当只有内层循环的循环条件为 false 时，才会完全跳出内层循环，才可结束外层的当次循环，开始下一次的循环。
+3. 设外层循环次数为 m 次，内层为 n 次，则内层循环体实际上需要执行 m x n 次。
 
 #### 多重循环控制相关案例
+1. 案例一
 ```
-//案例一
 package main
 
 import "fmt"
 
 func main() {
 	//应用案例
-	//1. 统计3个班的成绩情况，每个班有5名同学。
+	//1. 统计 3 个班的成绩情况，每个班有 5 名同学。
 	//2. 求出各个班的平均分和所有班级的平均分[学生的成绩从键盘输入]
 
 	//编程时两大绝招
@@ -1258,23 +1211,23 @@ func main() {
 	//2. 先死后活，先把程序写死，再用变量灵活替换。
 
 	//分析实现思路1
-	//1. 统计1个班成绩情况，每个班有5名同学，求出该班的平均分[学生的成绩从键盘输入] ==> [先易后难]
-	//2. 学生数就是5个 ==> [先死后活]
+	//1. 统计 1 个班成绩情况，每个班有5名同学，求出该班的平均分[学生的成绩从键盘输入] ==> [先易后难]
+	//2. 学生数就是 5 个 ==> [先死后活]
 	//3. 声明一个 sum 统计班级总分
 
 	//分析实现思路1：代码实现
 	//class_sum := 0.0
 	//for j := 1; j <= 5; j++ {
 	//	var score float64
-	//	fmt.Printf("请输入第%d学生成绩：\n", j)
+	//	fmt.Printf("请输入第 %d 学生成绩：\n", j)
 	//	fmt.Scanln(&score)
 		//累计总分
 	//	class_sum = class_sum + score
 	//}
-	//fmt.Printf("班级的平均分为：%v \n", class_sum/5)
+	//fmt.Printf("班级的平均分为：%v \n", class_sum / 5)
 
 	//分析实现思路2
-	//1. 统计三个班成绩情况，每个班有5名听雪，求出每个班的的平均分[学生的成绩从键盘输入]
+	//1. 统计三个班成绩情况，每个班有 5 名同学，求出每个班的的平均分[学生的成绩从键盘输入]
 	//2. i 表示第几个班级
 	//3. 定义一个变量存放总成绩
 
@@ -1285,15 +1238,15 @@ func main() {
 	//	class_sum := 0.0
 	//	for j := 1; j <= 5; j++ {
 	//		var score float64
-	//		fmt.Printf("请输入第%d班 第%d学生成绩：\n", i, j)
+	//		fmt.Printf("请输入第 %d 班 第 %d 学生成绩：\n", i, j)
 	//		fmt.Scanln(&score)
 	//		class_sum = class_sum + score
 	//	}
-	//	fmt.Printf("第%d个班级的平均分为：%v \n", i, class_sum / 5)
-	//	//将各个班的总成绩累计到total_sum
+	//	fmt.Printf("第 %d 个班级的平均分为：%v \n", i, class_sum / 5)
+	//	//将各个班的总成绩累计到 total_sum
 	//	total_sum = total_sum + class_sum
 	//}
-	//fmt.Printf("各个班级的总成绩%v 所有班级平均分为：%v \n", total_sum, total_sum / (3 * 5))
+	//fmt.Printf("各个班级的总成绩 %v 所有班级平均分为：%v \n", total_sum, total_sum / (3 * 5))
 
 	//分析实现思路3
 	//1. 我们可以把代码做活
@@ -1307,7 +1260,7 @@ func main() {
 		class_sum := 0.0
 		for j := 1; j <= student_num; j++ {
 			var score float64
-			fmt.Printf("请输入第%d班 第%d学生成绩：\n", i, j)
+			fmt.Printf("请输入第 %d 班 第 %d 学生成绩：\n", i, j)
 			fmt.Scanln(&score)
 			class_sum = class_sum + score
 		}
@@ -1315,19 +1268,18 @@ func main() {
 		//将各个班的总成绩累计到total_sum
 		total_sum = total_sum + class_sum
 	}
-	fmt.Printf("各个班级的总成绩%v 所有班级平均分为：%v \n", total_sum, total_sum / float64(class_num * student_num))
-
+	fmt.Printf("各个班级的总成绩 %v 所有班级平均分为：%v \n", total_sum, total_sum / float64(class_num * student_num))
 }
 ```
+2. 案例二
 ```
-//案例二
 package main
 
 import "fmt"
 
 func main() {
 	//应用案例
-	//统计三个班及格人数，每个班有5名同学
+	//统计三个班及格人数，每个班有 5 名同学
 	//分析思路
 	//1. 声明一个变量 pass_count 用于保存及格人数
 
@@ -1340,7 +1292,7 @@ func main() {
 		class_sum := 0.0
 		for j := 1; j <= student_num; j++ {
 			var score float64
-			fmt.Printf("请输入第%d班 第%d学生成绩：\n", i, j)
+			fmt.Printf("请输入第 %d 班 第 %d 学生成绩：\n", i, j)
 			fmt.Scanln(&score)
 			class_sum = class_sum + score
 			//判断分数是否及格
@@ -1348,16 +1300,16 @@ func main() {
 				pass_count++
 			}
 		}
-		fmt.Printf("第%d个班级的平均分为：%v \n", i, class_sum / float64(student_num))
-		//将各个班的总成绩累计到total_sum
+		fmt.Printf("第 %d 个班级的平均分为：%v \n", i, class_sum / float64(student_num))
+		//将各个班的总成绩累计到 total_sum
 		total_sum = total_sum + class_sum
 	}
-	fmt.Printf("各个班级的总成绩%v 所有班级平均分为：%v \n", total_sum, total_sum / float64(class_num * student_num))
-	fmt.Printf("及格人数为%v \n", pass_count)
+	fmt.Printf("各个班级的总成绩 %v 所有班级平均分为：%v \n", total_sum, total_sum / float64(class_num * student_num))
+	fmt.Printf("及格人数为 %v \n", pass_count)
 }
 ```
+3. 案例三
 ```
-//案例三
 package main
 
 import "fmt"
@@ -1376,14 +1328,14 @@ func main() {
 
 	//2. 打印半个金字塔
 	/*
-	 *		1个*
-	 **		2个*
-	 ***	3个*
+	 *		1 个 *
+	 **		2 个 *
+	 ***	3 个 *
 	*/
 
 	//3. 打印整个金字塔
 	/*
-	    *		1层 1 个*	规律：2 * 层数 -1		空格 2	规律：总层数 - 当前层数
+	    *		  1层 1 个*	规律：2 * 层数 -1		空格 2	规律：总层数 - 当前层数
 	   ***		2层 3 个*	规律：2 * 层数 -1		空格 1	规律：总层数 - 当前层数
 	  *****		3层 4 个*	规律：2 * 层数 -1		空格 0	规律：总层数 - 当前层数
 	*/
@@ -1396,9 +1348,9 @@ func main() {
 	    *
 	   * *
 	  *   *
-	分析：在我们给每行打印*号，需要考虑是打印 * 还是打印 空格
-	分析结果是：每层的第一个和最后一个是打印*，其他就应该是空，即输出空格。
-	分析到一个例外情况，底层全部打*
+	分析：在我们给每行打印 * 号，需要考虑是打印 * 还是打印 空格
+	分析结果是：每层的第一个和最后一个是打印 * ，其他就应该是空，即输出空格。
+	分析到一个例外情况，底层全部打 *
 	*/
 	var total_level int = 3
 	//i 表示层数
@@ -1413,14 +1365,13 @@ func main() {
 				} else {
 					fmt.Print(" ")
 				}
-
 			}
 			fmt.Println()
 	}
 }
 ```
+4. 案例四
 ```
-//案例四
 package main
 
 import "fmt"
@@ -1438,8 +1389,8 @@ func main() {
 }
 ```
 
-## 跳转控制语句-break
-### 快速入门案例
+### 跳转控制语句 - break
+#### 快速入门
 ```
 package main
 
@@ -1451,36 +1402,34 @@ import (
 
 func main() {
 	//案例
-	//随机生成1-100的一个数，知道生成了99整数，看看你一共用了几次
+	//随机生成 1-100 的一个数，知道生成了 99 整数，看看你一共用了几次
 
-	//分析：编写一个无限循环的控制，然后不停的随机生成树，当生成了99时，就退出这个无限循环 ==> break
+	//分析：编写一个无限循环的控制，然后不停的随机生成树，当生成了 99 时，就退出这个无限循环 ==> break
 
 	//我们为了生成一个随机数，还需要个 rand 设置一个种子
-	//time.Now().Unix(): 返回一个从1970:01:01 的0时0分0秒到现在的秒数
-	//如何随机的生成1-100的整数
+	//time.Now().Unix(): 返回一个从 1970:01:01 的 0 时 0 分 0 秒到现在的秒数
+	//如何随机的生成 1-100 的整数
 	//rand.Seed(time.Now().Unix())
-	//n := rand.Intn(100) + 1  //[0，100)
+	//n := rand.Intn(100) + 1  // [0，100)
 	//fmt.Println(n)
 
 	var count int = 0
 	for {
 		rand.Seed(time.Now().UnixNano())
-		n := rand.Intn(100) + 1  //[0，100)
+		n := rand.Intn(100) + 1  // [0，100)
 		fmt.Println("n =", n)
 		count ++
 		if n == 99 {
 			break //表示跳出for循环
 		}
 	}
-	fmt.Printf("生成 99 一共使用了%v次 \n", count)
-
+	fmt.Printf("生成 99 一共使用了 %v 次 \n", count)
 }
 ```
+#### 基本介绍
+1. break 语句用于终止某个语句块的执行，用于中断当前 for 循环或跳出 switch 语句。
 
-### 基本介绍
-1. break语句用于终止某个语句块的执行，用于中断当前for循环或跳出switch语句。
-
-### 基本语法
+#### 基本语法
 ```
 { ...
   break;
@@ -1488,7 +1437,7 @@ func main() {
 }
 ```
 
-### 注意事项和细节说明
+#### 注意事项和细节说明
 1. break 语句出现在多层嵌套的语句块中时，可以通过标签指明要终止的是哪一层语句块。
 2. 相关案例
 ```
@@ -1505,7 +1454,7 @@ func main() {
 		//label1: // 设置一个标签
 		for j := 0; j < 10; j++ {
 			if j == 2 {
-				//break // break 默认会跳出最近的for循环
+				//break // break 默认会跳出最近的 for 循环
 				//break label1
 				break label2
 			}
@@ -1516,7 +1465,7 @@ func main() {
 ```
 3. 对上面案例的说明
 ```
-(1) break 默认会跳出最近的for循环
+(1) break 默认会跳出最近的 for 循环
 (2) break 后面可以指定标签，跳出标签对应的 for 循环。
 ```
 4. 相关练习
@@ -1533,22 +1482,19 @@ func main() {
 	for i := 1; i <= 100; i++ {
 		sum += i // 求和
 		if sum > 20 {
-			fmt.Printf("当 sum >20 ，当前数是 %v", i)
+			fmt.Printf("当 sum > 20 ，当前数是 %v \n", i)
 			break
 		}
 	}
-
 }
-
 ```
 ```
-//练习二
 package main
 
 import "fmt"
 
 func main() {
-	//实现登录验证，有三次机会，如果用户名为"张无忌"，密码"888"提示登录成功，否则提示还有几次机会。
+	//实现登录验证，有三次机会，如果用户名为"张无忌"，密码 "888" 提示登录成功，否则提示还有几次机会。
 
 	var name string
 	var pwd string
@@ -1565,7 +1511,6 @@ func main() {
 			fmt.Println("登录成功")
 			break
 		} else {
-
 			loginChance--
 			if loginChance > 0 {
 				fmt.Printf("你还有 %v 登录机会，请珍惜 \n", loginChance)
@@ -1577,26 +1522,25 @@ func main() {
 }
 ```
 
-## 跳转控制语句-continue
-### 基本介绍
+### 跳转控制语句 - continue
+#### 基本介绍
 1. continue 语句用于结束本次循环，继续执行下一次循环。
-2. continue语句出现在多层嵌套的循环语句体中时，可以通过标签指明要跳过的是哪一层循环，这个和前面的标签使用的规则一样。
-
-### 基本语法
+2. continue 语句出现在多层嵌套的循环语句体中时，可以通过标签指明要跳过的是哪一层循环，这个和前面的标签使用的规则一样。
+3. 基本语法
 ```
 { ...
   continue;
   ...
 }
 ```
-3. 相关案例
+4. 相关案例
 ```
 package main
 
 import "fmt"
 
 func main() {
-	//continue案例
+	// continue 案例
 	label2:
 	for i := 0; i < 4; i++ {
 		//label1: // 设置一个标签
@@ -1605,12 +1549,12 @@ func main() {
 				//continue
 				continue label2
 			}
-			fmt.Println("j = ", j)
+			fmt.Println("j =", j)
 		}
 	}
 }
 ```
-4. 相关练习
+5. 相关练习
 ```
 //练习一
 package main
@@ -1623,7 +1567,7 @@ func main() {
 			if j == 2 {
 				continue;
 			}
-			fmt.Println("i = ", i, "j = ", j)
+			fmt.Println("i =", i, "j =", j)
 		}
 	}
 }
@@ -1635,8 +1579,6 @@ package main
 import "fmt"
 
 
-
-
 func main() {
 	here:
 	for i := 0; i < 2; i++ {
@@ -1645,13 +1587,13 @@ func main() {
 			if j == 2 {
 				continue here
 			}
-			fmt.Println("i = ", i ,"j =",j)
+			fmt.Println("i =", i ,"j =", j)
 		}
 	}
 }
 ```
 ```
-//练习3
+//练习三
 package main
 
 import "fmt"
@@ -1659,21 +1601,20 @@ import "fmt"
 func main()  {
 	// 练习
 	/*
-	continue实现 打印1-100之内的奇数[要求使用for循环+continue]
+	continue 实现打印 1-100 之内的奇数[要求使用 for 循环 + continue ]
 	*/
 
-	fmt.Println("1-100之内的奇数如下所示：")
+	fmt.Println("1-100 之内的奇数如下所示：")
 	for i := 1; i <= 100; i++ {
 		if i % 2 == 0 {
 			continue
 		}
-
 		fmt.Println(i)
 	}
 }
 ```
 ```
-//练习4
+//练习四
 package main
 
 import "fmt"
@@ -1688,34 +1629,32 @@ func main() {
 		fmt.Scanln(&num)
 
 		if num == 0 {
-			break //终止for循环
+			break // 终止 for 循环
 		}
-
 		if num > 0 {
 			positiveCount++
 			continue // 结束本次循环，进入下次循环
 		}
-
 		negativeCount++
 	}
 	fmt.Printf("正数个数是 %v 负数的个数是 %v", positiveCount, negativeCount)
 }
 ```
 
-## 跳转控制语句-goto
-### 基本介绍
-1. Go语言的goto语句可以无条件地转移到程序中指定的行。
-2. goto语句通常与条件控制语句配合使用。可用来实现条件转移，跳出循环体等功能。
-3. 在Go程序设计中一般不主张使用goto语句，以免造成程序的混乱，是理解和调试程序都产生困难。
+### 跳转控制语句 - goto
+#### 基本介绍
+1. Go 语言的 goto 语句可以无条件地转移到程序中指定的行。
+2. goto 语句通常与条件控制语句配合使用。可用来实现条件转移，跳出循环体等功能。
+3. 在 Go 程序设计中一般不主张使用 goto 语句，以免造成程序的混乱，使理解和调试程序都产生困难。
 
-### 基本语法
+#### 基本语法
 ```
 goto label
 ...
 label:statement
 ```
 
-### 快速入门案例
+#### 快速入门案例
 ```
 package main
 
@@ -1724,9 +1663,9 @@ import "fmt"
 
 func main() {
 
-	//演示goto的使用
-	//goto一般配合if语句使用
-	//尽量避免使用goto语句
+	//演示 goto 的使用
+	//goto 一般配合 if 语句使用
+	//尽量避免使用 goto 语句
 
 	var n int = 30
 	fmt.Println("ok1")
@@ -1742,21 +1681,15 @@ func main() {
 	fmt.Println("ok5")
 	fmt.Println("ok6")
 	fmt.Println("ok7")
-
-
 }
 ```
 
-## 跳转控制语句-return
-### 基本介绍
-1. return使用在方法或者函数中，表示跳出所在的方法或函数。
-2. 说明：
-```
-(1) 如果 return 是在普通的函数，则表示跳出该函数，即不再执行函数中 return 后面代码，也可以理解成终止函数。
-(2) 如果 return 是在 main 函数，表示终止 main 函数，也就是说终止程序。
-```
+### 跳转控制语句 - return
+#### 基本介绍
+1. return 使用在方法或者函数中，表示跳出所在的方法或函数。
+2. 说明：如果 return 是在普通的函数中，则表示跳出该函数，即不再执行函数中 return 后面代码，也可以理解成终止函数；如果 return 是在 main 函数，表示终止 main 函数，也就是说终止程序。
 
-### 快速入门案例
+#### 快速入门案例
 ```
 package main
 
@@ -1765,23 +1698,18 @@ import "fmt"
 
 func main() {
 
-	//演示return的使用
-
+	//演示 return 的使用
 	var n int = 30
-
 	fmt.Println("ok1")
 
 	if n > 20 {
 		return
 	}
-
 	fmt.Println("ok2")
 	fmt.Println("ok3")
 	fmt.Println("ok4")
 	fmt.Println("ok5")
 	fmt.Println("ok6")
 	fmt.Println("ok7")
-
-
 }
 ```
