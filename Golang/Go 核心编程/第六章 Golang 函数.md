@@ -139,7 +139,7 @@ package utils
 import "fmt"
 
 
-// 为了让其他包的文件使用cal函数，需要将c大写类似于其他语言的public
+// 为了让其他包的文件使用 cal 函数，需要将 c 大写类似于其他语言的 public
 func Cal(n1 float64, n2 float64, operator byte) float64 {
 	//将计算功能，放到一个函数中，在需要使用时，调用即可。
 
@@ -359,7 +359,7 @@ import "fmt"
 
 /*
 	请使用递归的方式，求出斐波那契数列1，1，2，3，5，8，13...
-	给你一个整数n，求出它的斐波那契数是多少？
+	给你一个整数 n ，求出它的斐波那契数是多少？
 */
 
 func fbn(n int) int {
@@ -386,8 +386,8 @@ package main
 import "fmt"
 
 /*
-	求函数值：已知f(1) = 3；f(n) = 2 * f(n-1) + 1;
-	请使用递归的思想编程，求出f(n)的值
+	求函数值：已知 f(1) = 3；f(n) = 2 * f(n-1) + 1;
+	请使用递归的思想编程，求出 f(n) 的值
 */
 
 func f(n int) int {
@@ -461,7 +461,7 @@ func test() {
 	fmt.Println(n1)
 }
 func main() {
-	// 这里不能使用 n1，因为 n1 是 test 函数的局部变量
+	// 这里不能使用 n1 ，因为 n1 是 test 函数的局部变量
 	//fmt.Println("n1 =", n1)
 	test()
 }
@@ -669,7 +669,7 @@ func sum(n1 int, args...int) int {
 	sum := n1
 	//遍历 args
 	for i := 0; i < len(args); i++ {
-		sum += args[i] //args[0] 表示取出 args 切片的第一个元素值，其他依次类推。
+		sum += args[i] // args[0] 表示取出 args 切片的第一个元素值，其他依次类推。
 	}
 	return sum
 }
@@ -1443,7 +1443,7 @@ func test() {
 	defer func() {
 		err := recover() // recover() 内置函数，可以捕获到异常
 		if err != nil { //说明捕获到异常/错误
-			fmt.Println("err = err", err)
+			fmt.Println("err =", err)
 		}
 	}()
 
@@ -1479,7 +1479,7 @@ func test() {
 	defer func() {
 		err := recover() // recover() 内置函数，可以捕获到异常
 		if err != nil { //说明捕获到异常/错误
-			fmt.Println("err = err", err)
+			fmt.Println("err =", err)
 			//这里就可以将错误信息发送给管理员
 			fmt.Println("发送邮件给 admin@sohu.com")
 		}
@@ -1488,7 +1488,7 @@ func test() {
 	num1 := 10
 	num2 := 0
 	res := num1 / num2
-	fmt.Println("res=", res)
+	fmt.Println("res =", res)
 
 }
 
