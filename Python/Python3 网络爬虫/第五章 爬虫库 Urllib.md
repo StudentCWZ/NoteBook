@@ -1,4 +1,4 @@
-# 第五章 爬虫库 Urllib
+# 爬虫库 Urllib
 ## Urllib 简介
 1. Urllib 是 Python自带标准库，无需安装，直接引用即可。
 2. Urllib 用常用于爬虫开发、API(应用程序编程接口)数据获取和测试。
