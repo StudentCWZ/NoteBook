@@ -1,4 +1,4 @@
-# 第四章 Chrome 分析网站
+# Chrome 分析网站
 ## Chrome 开发工具
 1. 浏览器是从事编程开发人员必备的开发工具，世界上五大主流浏览器分别是：IE、Opera、Google 。
 2. Chrome、Safari 和 Firefox，其中 Chrome 和 Firefox 是编程开发人员的首选，主要是两者运行速度、扩展性和用户体验都符合开发人员所需。
