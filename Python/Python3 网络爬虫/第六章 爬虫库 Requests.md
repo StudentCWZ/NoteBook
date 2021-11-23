@@ -1,4 +1,4 @@
-# 第六章 爬虫库 Requests
+# 爬虫库 Requests
 ## Requests 简介及安装
 1. Requests 是 Python 的一个很实用的 HTTP 客户端库，完全满足如今网络爬虫的需求。
 2. 与 Urllib 对比，Requests 不仅具备 Urllib 的全部功能；在开发使用上，语法简单易懂，完全符合 Python 优雅、简洁的特性；在兼容性上，完全兼容 Python2 和 Python3 ，具有较强的适用性。
