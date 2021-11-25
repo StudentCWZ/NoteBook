@@ -35,7 +35,7 @@ mysql> describe user;
 ```
 3. 插入数据(成功)
 ```
-mysql> insert into user values(1,'张三');
+mysql> insert into user values(1, '张三');
 Query OK, 1 row affected (0.00 sec)
 ```
 4. 由于主键约束，添加数据 id 字段不可以重复且不为空
@@ -43,7 +43,7 @@ Query OK, 1 row affected (0.00 sec)
 mysql> insert into user values(1, '张三');
 ERROR 1062 (23000): Duplicate entry '1' for key 'PRIMARY'
 
-mysql> insert into user values(2,'张三');
+mysql> insert into user values(2, '张三');
 Query OK, 1 row affected (0.00 sec)
 
 mysql> select * from user;
@@ -54,7 +54,7 @@ mysql> select * from user;
 |  2 | 张三   |
 +----+--------+
 
-mysql> insert into user values(NULL,'张三');
+mysql> insert into user values(NULL, '张三');
 ERROR 1048 (23000): Column 'id' cannot be null
 ```
 
@@ -78,17 +78,17 @@ Records: 0  Duplicates: 0  Warnings: 0
 ```
 4. 插入数据
 ```
-mysql> insert into user2 values(1,'张三','123');
+mysql> insert into user2 values(1, '张三', '123');
 Query OK, 1 row affected (0.01 sec)
 ```
 5. 再插入相同数据报错
 ```
-mysql> insert into user2 values(1,'张三','123');
+mysql> insert into user2 values(1, '张三', '123');
 ERROR 1062 (23000): Duplicate entry '1-张三' for key 'PRIMARY'
 ```
 6. 联合主键中的每个主键字段都不能为空
 ```
-mysql> insert into user2 values(NULL,'李四','123');
+mysql> insert into user2 values(NULL, '李四', '123');
 ERROR 1048 (23000): Column 'id' cannot be null
 ```
 
@@ -226,12 +226,12 @@ Records: 0  Duplicates: 0  Warnings: 0
 ```
 4. 插入数据
 ```
-mysql> insert into user5 values(1,'zhangsan');
+mysql> insert into user5 values(1, 'zhangsan');
 Query OK, 1 row affected (0.00 sec)
 ```
 5. 正常插入
 ```
-mysql> insert into user5 values(1,'lisi');
+mysql> insert into user5 values(1, 'lisi');
 Query OK, 1 row affected (0.01 sec)
 ```
 6. 创建表时直接添加唯一约束
@@ -301,7 +301,7 @@ mysql> desc user7;
 ```
 
 ## 联合唯一约束
-1. unique(id,name) 表示两个键在一起不重复就行
+1. unique(id, name) 表示两个键在一起不重复就行
 2. 添加联合唯一约束
 ```
 mysql> create table user8(
@@ -322,12 +322,12 @@ mysql> desc user8;
 ```
 3. 插入数据
 ```
-mysql> insert into user8 values(1,'zhangsan');
+mysql> insert into user8 values(1, 'zhangsan');
 Query OK, 1 row affected (0.01 sec)
 
-mysql> insert into user8 values(1,'zhangsan');
+mysql> insert into user8 values(1, 'zhangsan');
 ERROR 1062 (23000): Duplicate entry '1-zhangsan' for key 'id'
-mysql> insert into user8 values(2,'zhangsan');
+mysql> insert into user8 values(2, 'zhangsan');
 Query OK, 1 row affected (0.00 sec)
 
 mysql> select * from user8;
@@ -341,7 +341,7 @@ mysql> select * from user8;
 ```
 4. 再度插入数据
 ```
-mysql> insert into user8 values(1,'lisi');
+mysql> insert into user8 values(1, 'lisi');
 Query OK, 1 row affected (0.00 sec)
 
 mysql> select * from user8;
@@ -422,7 +422,7 @@ mysql> desc user10;
 ```
 3. 插入数据
 ```
-mysql> insert into user10 (id,name) values(1,'zhangsan');
+mysql> insert into user10 (id, name) values(1, 'zhangsan');
 Query OK, 1 row affected (0.00 sec)
 
 mysql> select * from user10;
@@ -435,7 +435,7 @@ mysql> select * from user10;
 ```
 4. 再插入数据(传了值，就不会使用默认值)
 ```
-mysql> insert into user10 values(1,'zhangsan',19);
+mysql> insert into user10 values(1, 'zhangsan', 19);
 Query OK, 1 row affected (0.01 sec)
 
 mysql> select * from user10;
@@ -497,16 +497,16 @@ mysql> desc students;
 ```
 2. classes 插入数据
 ```
-mysql> insert into classes values(1,'一班');
+mysql> insert into classes values(1, '一班');
 Query OK, 1 row affected (0.00 sec)
 
-mysql> insert into classes values(2,'二班');
+mysql> insert into classes values(2, '二班');
 Query OK, 1 row affected (0.00 sec)
 
-mysql> insert into classes values(3,'三班');
+mysql> insert into classes values(3, '三班');
 Query OK, 1 row affected (0.00 sec)
 
-mysql> insert into classes values(4,'四班');
+mysql> insert into classes values(4, '四班');
 Query OK, 1 row affected (0.00 sec)
 
 mysql> select * from classes;
@@ -522,16 +522,16 @@ mysql> select * from classes;
 ```
 3. 往 students 表中插入数据
 ```
-mysql> insert into students values(1001,'张三',1);
+mysql> insert into students values(1001, '张三', 1);
 Query OK, 1 row affected (0.00 sec)
 
-mysql> insert into students values(1002,'张三',2);
+mysql> insert into students values(1002, '张三', 2);
 Query OK, 1 row affected (0.00 sec)
 
-mysql> insert into students values(1003,'张三',3);
+mysql> insert into students values(1003, '张三', 3);
 Query OK, 1 row affected (0.00 sec)
 
-mysql> insert into students values(1004,'张三',4);
+mysql> insert into students values(1004, '张三', 4);
 Query OK, 1 row affected (0.00 sec)
 
 mysql> select * from students;
@@ -547,7 +547,7 @@ mysql> select * from students;
 ```
 4. 再插入数据(报错)
 ```
-mysql> insert into students values(1005,'lisi',5);
+mysql> insert into students values(1005, 'lisi', 5);
 ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`test`.`students`, CONSTRAINT `students_ibfk_1` FOREIGN KEY (`class_id`) REFERENCES `classes` (`id`))
 ```
 5. 主表中的记录被副表引用，是不可以被删除的
