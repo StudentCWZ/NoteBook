@@ -133,7 +133,7 @@ Empty set (0.00 sec)
 ```
 14. 往数据表中添加数据记录
 ```
-mysql> insert into pet values('Puffball','Diane','hamster','f','1999-03-30',NULL);
+mysql> insert into pet values('Puffball', 'Diane', 'hamster', 'f', '1999-03-30', NULL);
 Query OK, 1 row affected (0.00 sec)
 ```
 15. 再一次查询数据表中的记录
@@ -155,7 +155,7 @@ alter table pet change sex sex char(1) character set utf8;
 ```
 17. 再插入数据
 ```
-mysql> insert into pet values('旺财','周星驰','狗','公','1990-01-01',NULL);
+mysql> insert into pet values('旺财', '周星驰', '狗', '公', '1990-01-01', NULL);
 Query OK, 1 row affected (0.00 sec)
 ```
 18. 再一次查询数据表中的记录
@@ -171,15 +171,15 @@ mysql> select * from pet;
 ```
 19. 插入数据
 ```
-insert into pet values('Fluffy','Harold','cat','f','1993-02-04',NULL);
-insert into pet values('Claws','Gwen','cat','m','1994-03-17',NULL);
-insert into pet values('Buffy','Harold','dog','f','1989-05-13',NULL);
-insert into pet values('Fang','Benny','dog','m','1990-08-27',NULL);
-insert into pet values('Bowser','Diane','dog','m','1979-08-31','1995-07-29');
-insert into pet values('Chirpy','Gwen','bird','f','1998-09-11',NULL);
-insert into pet values('Whistler','Gwen','bird',NULL,'1997-12-09',NULL);
-insert into pet values('Slim','Benny','snake','m','1996-04-29',NULL);
-insert into pet values('Puffball','Diane','hamster','f','1999-03-30',NULL);
+insert into pet values('Fluffy', 'Harold', 'cat', 'f', '1993-02-04', NULL);
+insert into pet values('Claws', 'Gwen', 'cat', 'm', '1994-03-17',NULL);
+insert into pet values('Buffy', 'Harold', 'dog', 'f', '1989-05-13', NULL);
+insert into pet values('Fang', 'Benny', 'dog', 'm', '1990-08-27', NULL);
+insert into pet values('Bowser', 'Diane', 'dog', 'm', '1979-08-31', '1995-07-29');
+insert into pet values('Chirpy', 'Gwen', 'bird', 'f', '1998-09-11', NULL);
+insert into pet values('Whistler', 'Gwen', 'bird', NULL, '1997-12-09', NULL);
+insert into pet values('Slim', 'Benny', 'snake', 'm', '1996-04-29', NULL);
+insert into pet values('Puffball', 'Diane', 'hamster', 'f', '1999-03-30', NULL);
 ```
 20. 再一次查询数据表中的记录
 ```
@@ -224,7 +224,7 @@ mysql> select * from pet;
 ```
 22. 再去插入一条
 ```
-mysql> insert into pet values('Puffball','Diane','hamster','f','1999-03-30',NULL);
+mysql> insert into pet values('Puffball', 'Diane', 'hamster', 'f', '1999-03-30', NULL);
 Query OK, 1 row affected (0.00 sec)
 
 mysql> select * from pet;
@@ -358,3 +358,5 @@ ERROR 1264 (22003): Out of range value for column 'number' at row 1
 #### 数据类型如何选择
 1. 日期选择按照格式  
 2. 数值和字符串按照大小
+
+
