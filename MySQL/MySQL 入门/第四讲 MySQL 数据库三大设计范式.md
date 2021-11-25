@@ -22,13 +22,13 @@ Records: 0  Duplicates: 0  Warnings: 0
 ```
 4. 插入数据
 ```
-mysql> insert into student2 values(1,'张三','中国四川省成都市武侯区武侯大道100号');
+mysql> insert into student2 values(1, '张三', '中国四川省成都市武侯区武侯大道100号');
 Query OK, 1 row affected (0.00 sec)
 
-mysql> insert into student2 values(2,'李四','中国四川省成都市武侯区京城大道200号');
+mysql> insert into student2 values(2, '李四', '中国四川省成都市武侯区京城大道200号');
 Query OK, 1 row affected (0.00 sec)
 
-mysql> insert into student2 values(3,'王五','中国四川省成都市高新区天府大道99号');
+mysql> insert into student2 values(3, '王五', '中国四川省成都市高新区天府大道99号');
 Query OK, 1 row affected (0.00 sec)
 
 
@@ -92,13 +92,13 @@ Records: 0  Duplicates: 0  Warnings: 0
 ```
 8. 插入数据(假设最后字段不可拆分)--满足第一范式
 ```
-mysql> insert into student3 values(1,'张三','中国','四川省','成都市','武侯区武侯大道100号');
+mysql> insert into student3 values(1, '张三', '中国', '四川省', '成都市', '武侯区武侯大道100号');
 Query OK, 1 row affected (0.00 sec)
 
-mysql> insert into student3 values(2,'李四','中国','四川省','成都市','武侯区京城大道200号');
+mysql> insert into student3 values(2, '李四', '中国', '四川省', '成都市', '武侯区京城大道200号');
 Query OK, 1 row affected (0.00 sec)
 
-mysql> insert into student3 values(3,'王五','中国','四川省','成都市','高新区天府大道99号');
+mysql> insert into student3 values(3, '王五', '中国', '四川省', '成都市', '高新区天府大道99号');
 Query OK, 1 row affected (0.00 sec)
 
 mysql> select * from student3;
